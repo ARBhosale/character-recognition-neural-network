@@ -1,3 +1,6 @@
+import neural.TestConfigs;
+import neural.network.NeuralNetwork;
+import neural.network.NeuralNetworkConfig;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils;
 
@@ -12,10 +15,14 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("Start!");
 
-        Instances trainingSet = loadDataSet(Application.TWOCLASS_TRAINING_DATA_PATH);
-        Instances testingset = loadDataSet(Application.TWOCLASS_TESTING_DATA_PATH);
+//        Instances trainingSet = loadDataSet(Application.TWOCLASS_TRAINING_DATA_PATH);
+//        Instances testingset = loadDataSet(Application.TWOCLASS_TESTING_DATA_PATH);
+//
+//        System.out.println("Data loaded");
+        TestConfigs testConfigs = new TestConfigs(3,2);
+        NeuralNetworkConfig testConfig = testConfigs.getNetworkConfigs().get(0);
+        NeuralNetwork network = new NeuralNetwork(testConfig);
 
-        System.out.println("Data loaded");
     }
 
     private static Instances loadDataSet(String path) {
