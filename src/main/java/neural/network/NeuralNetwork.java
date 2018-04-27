@@ -19,6 +19,24 @@ public class NeuralNetwork {
         this.initializeNeuralConnections();
     }
 
+    public void forwardPropogate() {
+        this.forwardPropogateHiddenLayers();
+        this.forwardPropogateFromNeuralLayer(this.outputLayer);
+    }
+
+    private void forwardPropogateHiddenLayers() {
+        for (NeuralLayer hiddenLayer : this.hiddenLayers) {
+            this.forwardPropogateFromNeuralLayer(hiddenLayer);
+        }
+    }
+
+    private void forwardPropogateFromNeuralLayer(NeuralLayer layer) {
+        for (NeuralNode node : layer.getNeuralNodes()) {
+            node.activateNeuron();
+            node.transformNeuron();
+        }
+    }
+
     private void initializeNeuralLayers() {
         this.initializeInputLayer();
         this.initializeHiddenLayer();
@@ -39,7 +57,9 @@ public class NeuralNetwork {
 
 
     private void initializeInputLayer() {
-        this.inputLayer = new NeuralLayer(this.networkConfig.getNumberOfInputUnits());
+        this.inputLayer = new NeuralLayer(this.networkConfig.getNumberOfInputUnits(),
+                this.networkConfig.getInputLayerTransformFunction(), this.networkConfig.getInputLayerThreshold());
+
     }
 
 
@@ -47,13 +67,14 @@ public class NeuralNetwork {
         ArrayList<HiddenLayerConfig> hConfigs = this.networkConfig.getHiddenLayerConfigs();
         this.hiddenLayers = new ArrayList<NeuralLayer>(hConfigs.size());
         for (HiddenLayerConfig config : hConfigs) {
-            NeuralLayer hiddenLayer = new NeuralLayer(config.getNumberOfHiddenUnits());
+            NeuralLayer hiddenLayer = new NeuralLayer(config.getNumberOfHiddenUnits(), config.getTransformFunction(), config.getThreshold());
             this.hiddenLayers.add(hiddenLayer);
         }
     }
 
     private void initializeOutputLayer() {
-        this.outputLayer = new NeuralLayer(this.networkConfig.getNumberOfOutputUnits());
+        this.outputLayer = new NeuralLayer(this.networkConfig.getNumberOfOutputUnits(),
+                this.networkConfig.getOutputLayerTransformFunction(), this.networkConfig.getOutputLayerThreshold());
     }
 
     //    connections from Layer A to Layer B

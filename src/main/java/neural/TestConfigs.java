@@ -31,11 +31,13 @@ public class TestConfigs {
 
     private void initializeTestConfig1() {
         Integer numberOfHiddenUnits = (this.numberOfInputUnits + this.numberOfOutputUnits) / 2;
-        HiddenLayerConfig hConfig1 = new HiddenLayerConfig(numberOfHiddenUnits);
+        HiddenLayerConfig hConfig1 = new HiddenLayerConfig(numberOfHiddenUnits, 's');
+        hConfig1.setThreshold(0.3D);
         ArrayList<HiddenLayerConfig> hConfigs = new ArrayList<HiddenLayerConfig>();
         hConfigs.add(hConfig1);
 
         NeuralNetworkConfig config1 = new NeuralNetworkConfig(this.numberOfInputUnits, this.numberOfOutputUnits, hConfigs);
+        config1.setOutputLayerTransformFunction('s');
         this.networkConfigs.add(config1);
     }
 }

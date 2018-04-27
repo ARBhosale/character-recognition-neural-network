@@ -19,9 +19,12 @@ public class Application {
 //        Instances testingset = loadDataSet(Application.TWOCLASS_TESTING_DATA_PATH);
 //
 //        System.out.println("Data loaded");
-        TestConfigs testConfigs = new TestConfigs(3,2);
+        TestConfigs testConfigs = new TestConfigs(3, 2);
         NeuralNetworkConfig testConfig = testConfigs.getNetworkConfigs().get(0);
         NeuralNetwork network = new NeuralNetwork(testConfig);
+        network.forwardPropogate();
+
+        System.out.println(network.toString());
 
     }
 
