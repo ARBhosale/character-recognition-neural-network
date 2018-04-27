@@ -10,8 +10,8 @@ public class NeuralConnection {
     private Long id;
     private NeuralNode nodeA;
     private NeuralNode nodeB;
-    private Double weight = Math.random();
-    private Double learningRate = 0.3D;
+    private double weight = Math.random();
+    private double learningRate = 0.3D;
 
     public NeuralConnection(NeuralNode nodeA, NeuralNode nodeB) {
         this.nodeA = nodeA;
@@ -19,11 +19,11 @@ public class NeuralConnection {
         this.id = ++NeuralConnection.count;
     }
 
-    public Double getLearningRate() {
+    public double getLearningRate() {
         return learningRate;
     }
 
-    public void setLearningRate(Double learningRate) {
+    public void setLearningRate(double learningRate) {
         this.learningRate = learningRate;
     }
 
@@ -51,11 +51,11 @@ public class NeuralConnection {
         this.nodeB = nodeB;
     }
 
-    public Double getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

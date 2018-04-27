@@ -11,10 +11,10 @@ public class NeuralLayer {
     private Integer numberOfNodes;
     private char transformFunction;
     private ArrayList<NeuralNode> neuralNodes;
-    private Double threshold = 0D;
-    private Double learningRate = 0D;
+    private double threshold = 0D;
+    private double learningRate = 0D;
 
-    public NeuralLayer(Integer numberOfNodes, char transformFunction, Double threshold, Double learningRate) {
+    public NeuralLayer(Integer numberOfNodes, char transformFunction, double threshold, double learningRate) {
         this.id = ++NeuralLayer.count;
         this.numberOfNodes = numberOfNodes;
         this.transformFunction = transformFunction;
@@ -54,6 +54,7 @@ public class NeuralLayer {
         this.neuralNodes = new ArrayList<NeuralNode>(this.numberOfNodes);
         for (int i = 0; i < this.numberOfNodes; i++) {
             NeuralNode node = new NeuralNode(this);
+            node.setThresholdValue(this.threshold);
             neuralNodes.add(node);
         }
     }
@@ -66,11 +67,11 @@ public class NeuralLayer {
         this.transformFunction = transformFunction;
     }
 
-    public Double getThreshold() {
+    public double getThreshold() {
         return threshold;
     }
 
-    public void setThreshold(Double threshold) {
+    public void setThreshold(double threshold) {
         this.threshold = threshold;
     }
 }

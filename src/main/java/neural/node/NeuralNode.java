@@ -14,36 +14,36 @@ public class NeuralNode {
     private ArrayList<NeuralConnection> incomingConnections;
     private ArrayList<NeuralConnection> outgoingConnections;
 
-    private Double activatedValue = 0D;
-    private Double thresholdValue = 0D;
-    private Double outputValue = 0D;
-    private Double targetValue;
+    private double activatedValue = 0D;
+    private double thresholdValue = 0D;
+    private double outputValue = 0D;
+    private double targetValue;
 
-    private Double errorValue = 0D;
+    private double errorValue = 0D;
 
     private char transformFunction;
 
-    public Double getActivatedValue() {
+    public double getActivatedValue() {
         return activatedValue;
     }
 
-    public void setActivatedValue(Double activatedValue) {
+    public void setActivatedValue(double activatedValue) {
         this.activatedValue = activatedValue;
     }
 
-    public Double getTargetValue() {
+    public double getTargetValue() {
         return targetValue;
     }
 
-    public void setTargetValue(Double targetValue) {
+    public void setTargetValue(double targetValue) {
         this.targetValue = targetValue;
     }
 
-    public Double getErrorValue() {
+    public double getErrorValue() {
         return errorValue;
     }
 
-    public void setErrorValue(Double errorValue) {
+    public void setErrorValue(double errorValue) {
         this.errorValue = errorValue;
     }
 
@@ -59,6 +59,7 @@ public class NeuralNode {
         if (null == this.incomingConnections) {
             return;
         }
+        this.activatedValue = 0D;
         // for an incoming connection, this node is nodeB
         for (NeuralConnection connection : this.incomingConnections) {
             this.activatedValue += connection.getWeight() * connection.getNodeA().getOutputValue();
@@ -67,6 +68,9 @@ public class NeuralNode {
     }
 
     public void transformNeuron() {
+        if (null == this.incomingConnections) {
+            return;
+        }
         switch (this.transformFunction) {
             case 's':
                 this.outputValue = this.transformSigmoid();
@@ -86,19 +90,19 @@ public class NeuralNode {
         }
     }
 
-    public Double getThresholdValue() {
+    public double getThresholdValue() {
         return thresholdValue;
     }
 
-    public void setThresholdValue(Double thresholdValue) {
+    public void setThresholdValue(double thresholdValue) {
         this.thresholdValue = thresholdValue;
     }
 
-    public Double getOutputValue() {
+    public double getOutputValue() {
         return outputValue;
     }
 
-    public void setOutputValue(Double outputValue) {
+    public void setOutputValue(double outputValue) {
         this.outputValue = outputValue;
     }
 
@@ -140,14 +144,14 @@ public class NeuralNode {
         this.initializeNeuralNode();
     }
 
-    public NeuralNode(NeuralLayer layer, Double targetValue) {
+    public NeuralNode(NeuralLayer layer, double targetValue) {
         this.layer = layer;
         this.id = ++NeuralNode.count;
         this.targetValue = targetValue;
         this.initializeNeuralNode();
     }
 
-    public void updateValue(Double delta) {
+    public void updateValue(double delta) {
         this.outputValue += delta;
     }
 
@@ -158,9 +162,9 @@ public class NeuralNode {
         this.thresholdValue = layer.getThreshold();
     }
 
-    private Double getErrorValue(Double delta) {
-        Double currentErrorValue = 0D;
-        if (null != this.targetValue) {
+    private double getErrorValue(double delta) {
+        double currentErrorValue = 0D;
+        if (0D != this.targetValue) {
             //  output node
             currentErrorValue = (this.targetValue - this.outputValue) * delta;
         } else {
@@ -173,11 +177,12 @@ public class NeuralNode {
         return currentErrorValue;
     }
 
-    private Double transformSigmoid() {
-        return 1 / (1 + (Math.exp(this.activatedValue)));
+    private double transformSigmoid() {
+
+        return 1 / (1 + (Math.exp(-1*this.activatedValue)));
     }
 
-    private Double getDerivativeForSigmoid(Double value) {
+    private double getDerivativeForSigmoid(double value) {
         return value * (1D - value);
     }
 }

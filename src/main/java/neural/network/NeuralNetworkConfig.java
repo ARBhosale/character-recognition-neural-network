@@ -5,37 +5,47 @@ import java.util.ArrayList;
 public class NeuralNetworkConfig {
     //    input layer
     private char inputLayerTransformFunction;
-    private Double inputLayerThreshold = 0D;
+    private double inputLayerThreshold = 0D;
     //    output layer
     private char outputLayerTransformFunction;
-    private Double outputLayerThreshold = 0D;
+    private double outputLayerThreshold = 0D;
     //    hidden layer
     private ArrayList<HiddenLayerConfig> hiddenLayerConfigs;
 
-    private Double learningRate = 0.3D;
+    private double learningRate = 0.3D;
 
-    public Double getLearningRate() {
+    private Integer numberOfEpochs = 2;
+
+    public Integer getNumberOfEpochs() {
+        return numberOfEpochs;
+    }
+
+    public void setNumberOfEpochs(Integer numberOfEpochs) {
+        this.numberOfEpochs = numberOfEpochs;
+    }
+
+    public double getLearningRate() {
         return learningRate;
     }
 
-    public void setLearningRate(Double learningRate) {
+    public void setLearningRate(double learningRate) {
         this.learningRate = learningRate;
     }
 
 
-    public Double getInputLayerThreshold() {
+    public double getInputLayerThreshold() {
         return inputLayerThreshold;
     }
 
-    public void setInputLayerThreshold(Double inputLayerThreshold) {
+    public void setInputLayerThreshold(double inputLayerThreshold) {
         this.inputLayerThreshold = inputLayerThreshold;
     }
 
-    public Double getOutputLayerThreshold() {
+    public double getOutputLayerThreshold() {
         return outputLayerThreshold;
     }
 
-    public void setOutputLayerThreshold(Double outputLayerThreshold) {
+    public void setOutputLayerThreshold(double outputLayerThreshold) {
         this.outputLayerThreshold = outputLayerThreshold;
     }
 
@@ -66,5 +76,17 @@ public class NeuralNetworkConfig {
 
     public void setHiddenLayerConfigs(ArrayList<HiddenLayerConfig> hiddenLayerConfigs) {
         this.hiddenLayerConfigs = hiddenLayerConfigs;
+    }
+
+    @Override
+    public String toString() {
+        return "NeuralNetworkConfig{" +
+                "inputLayerTransformFunction=" + inputLayerTransformFunction +
+                ", inputLayerThreshold=" + inputLayerThreshold +
+                ", outputLayerTransformFunction=" + outputLayerTransformFunction +
+                ", outputLayerThreshold=" + outputLayerThreshold +
+                ", learningRate=" + learningRate +
+                ", numberOfEpochs=" + numberOfEpochs +
+                '}';
     }
 }

@@ -1,6 +1,7 @@
 import neural.TestConfigs;
 import neural.network.NeuralNetwork;
 import neural.network.NeuralNetworkConfig;
+import weka.core.Debug;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils;
 import weka.filters.Filter;
@@ -19,10 +20,11 @@ public class Application {
 
         Filter filter = new Normalize();
         Instances set = loadDataSet(Application.TWOCLASS_TRAINING_DATA_PATH);
+        set.randomize(new Debug.Random(1));
         filter.setInputFormat(set);
         Instances datasetnor = Filter.useFilter(set, filter);
 
-        Instances trainingSet = new Instances(datasetnor, 0, 3);
+        Instances trainingSet = datasetnor;
         trainingSet.setClassIndex(trainingSet.numAttributes() - 1);
 
 //        Instances testingSet = loadDataSet(Application.TWOCLASS_TESTING_DATA_PATH);

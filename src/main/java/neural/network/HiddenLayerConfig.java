@@ -3,13 +3,13 @@ package neural.network;
 public class HiddenLayerConfig {
     private Integer numberOfHiddenUnits;
     private char transformFunction;
-    private Double threshold = 0D;
+    private double threshold = 0D;
 
-    public Double getThreshold() {
+    public double getThreshold() {
         return threshold;
     }
 
-    public void setThreshold(Double threshold) {
+    public void setThreshold(double threshold) {
         this.threshold = threshold;
     }
 
@@ -32,5 +32,14 @@ public class HiddenLayerConfig {
     public HiddenLayerConfig(Integer numberOfHiddenUnits, char transformFunction) {
         this.numberOfHiddenUnits = numberOfHiddenUnits;
         this.transformFunction = transformFunction;
+    }
+
+    @Override
+    public String toString() {
+        return "HiddenLayerConfig{" +
+                "numberOfHiddenUnits=" + numberOfHiddenUnits +
+                ", transformFunction=" + transformFunction +
+                ", threshold=" + threshold +
+                '}';
     }
 }

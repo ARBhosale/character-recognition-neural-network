@@ -6,6 +6,7 @@ import neural.node.NeuralNode;
 import weka.core.Instance;
 import weka.core.Instances;
 
+import javax.swing.event.DocumentEvent;
 import java.util.ArrayList;
 
 public class NeuralNetwork {
@@ -24,11 +25,26 @@ public class NeuralNetwork {
     }
 
     public void train() {
-        for (Instance instance : this.instances) {
-            this.updateInputLayer(instance);
-            this.forwardPropogate();
-            this.backwardPropagate();
+        System.out.println(this.toString());
+        System.out.println("Starting training");
+        for (int i = 0; i < this.networkConfig.getNumberOfEpochs(); i++) {
+            System.out.println("Epoch: " + i);
+            for (Instance instance : this.instances) {
+                this.updateInputLayer(instance);
+                this.forwardPropogate();
+                this.backwardPropagate();
+                this.updateWeights();
+            }
+            System.out.println("Sum of square errors: " + this.getSumSquaredErrorFromOutputLayer());
         }
+    }
+
+    private double getSumSquaredErrorFromOutputLayer() {
+        double sumOfErrors = 0D;
+        for (NeuralNode outputNode : this.outputLayer.getNeuralNodes()) {
+            sumOfErrors += Math.pow((outputNode.getTargetValue() - outputNode.getOutputValue()), 2);
+        }
+        return sumOfErrors;
     }
 
     private void forwardPropogate() {
@@ -39,7 +55,6 @@ public class NeuralNetwork {
     private void backwardPropagate() {
         this.backPropagateFromNeuralLayer(this.outputLayer);
         this.backPropagateHiddenLayers();
-        this.updateWeights();
     }
 
     private void updateWeights() {
@@ -106,7 +121,7 @@ public class NeuralNetwork {
 
 
     private void initializeInputLayer() {
-        this.inputLayer = new NeuralLayer(this.instances.numAttributes(),
+        this.inputLayer = new NeuralLayer(this.instances.numAttributes() - 1,
                 this.networkConfig.getInputLayerTransformFunction(),
                 this.networkConfig.getInputLayerThreshold(), this.networkConfig.getLearningRate());
 
@@ -115,6 +130,9 @@ public class NeuralNetwork {
     private void updateInputLayer(Instance instance) {
         ArrayList<NeuralNode> inputNodes = this.inputLayer.getNeuralNodes();
         for (int i = 0; i < inputNodes.size(); i++) {
+            if (instance.value(i) > 1) {
+                int a = 3;
+            }
             inputNodes.get(i).setOutputValue(instance.value(i));
         }
     }
@@ -131,18 +149,26 @@ public class NeuralNetwork {
     }
 
     private void initializeOutputLayer() {
-//        this.outputLayer = new NeuralLayer(this.instances.numClasses(),
-//                this.networkConfig.getOutputLayerTransformFunction(), this.networkConfig.getOutputLayerThreshold());
+        this.outputLayer = new NeuralLayer(this.instances.numClasses(),
+                this.networkConfig.getOutputLayerTransformFunction(),
+                this.networkConfig.getOutputLayerThreshold(),
+                this.networkConfig.getLearningRate());
 
-//        for (int i = 0; i < this.instances.numClasses(); i++) {
+        for (int i = 0; i < this.instances.numClasses(); i++) {
+            double transformedTargetValue = this.transformSigmoid(Double.valueOf(i));
+            this.outputLayer.getNeuralNodes().get(i).setTargetValue(transformedTargetValue);
+        }
+//        this.outputLayer = new NeuralLayer(2,
+//                this.networkConfig.getOutputLayerTransformFunction(),
+//                this.networkConfig.getOutputLayerThreshold(), this.networkConfig.getLearningRate());
+//        for (int i = 0; i < 2; i++) {
 //            this.outputLayer.getNeuralNodes().get(i).setTargetValue(Double.valueOf(i));
 //        }
-        this.outputLayer = new NeuralLayer(2,
-                this.networkConfig.getOutputLayerTransformFunction(),
-                this.networkConfig.getOutputLayerThreshold(), this.networkConfig.getLearningRate());
-        for (int i = 0; i < 2; i++) {
-            this.outputLayer.getNeuralNodes().get(i).setTargetValue(Double.valueOf(i));
-        }
+    }
+
+    private double transformSigmoid(double value) {
+
+        return 1 / (1 + (Math.exp(-1 * value)));
     }
 
     //    connections from Layer A to Layer B
@@ -155,5 +181,12 @@ public class NeuralNetwork {
                 nodeB.getIncomingConnections().add(connection);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "NeuralNetwork{" +
+                "networkConfig=" + networkConfig.toString() +
+                '}';
     }
 }
