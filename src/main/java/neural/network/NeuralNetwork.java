@@ -37,6 +37,24 @@ public class NeuralNetwork {
             }
             System.out.println("Sum of square errors: " + this.getSumSquaredErrorFromOutputLayer());
         }
+        System.out.println("Training completed!");
+    }
+
+    public void predictClass(Instance instance) {
+        System.out.println("Expected class: " + instance.value(instance.numAttributes() - 1));
+        System.out.println("Predicting...");
+        this.updateInputLayer(instance);
+        System.out.println("Predicted class: " + this.getMaxOutputFromOutputLayer());
+    }
+
+    private double getMaxOutputFromOutputLayer() {
+        double max = Double.NEGATIVE_INFINITY;
+        for (NeuralNode outputNode : this.outputLayer.getNeuralNodes()) {
+            if (outputNode.getOutputValue() > max) {
+                max = outputNode.getOutputValue();
+            }
+        }
+        return max;
     }
 
     private double getSumSquaredErrorFromOutputLayer() {

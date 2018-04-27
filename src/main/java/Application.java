@@ -17,27 +17,34 @@ public class Application {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Start!");
-
         Filter filter = new Normalize();
-        Instances set = loadDataSet(Application.TWOCLASS_TRAINING_DATA_PATH);
-        set.randomize(new Debug.Random(1));
-        filter.setInputFormat(set);
-        Instances datasetnor = Filter.useFilter(set, filter);
 
-        Instances trainingSet = datasetnor;
-        trainingSet.setClassIndex(trainingSet.numAttributes() - 1);
-
-//        Instances testingSet = loadDataSet(Application.TWOCLASS_TESTING_DATA_PATH);
-//        testingSet.setClassIndex(testingSet.numAttributes() -1);
-
-        System.out.println("Data loaded");
+        System.out.println("Loading training data...");
+        Instances trainingSet = loadDataSet(Application.TWOCLASS_TRAINING_DATA_PATH);
+        trainingSet.randomize(new Debug.Random(1));
+        filter.setInputFormat(trainingSet);
+        Instances normalizedTrainingSet = Filter.useFilter(trainingSet, filter);
+        normalizedTrainingSet.setClassIndex(normalizedTrainingSet.numAttributes() - 1);
+        System.out.println("Training data loaded");
 
         TestConfigs testConfigs = new TestConfigs();
         NeuralNetworkConfig testConfig = testConfigs.getNetworkConfigs().get(0);
 
-        NeuralNetwork network = new NeuralNetwork(testConfig, trainingSet);
+        NeuralNetwork network = new NeuralNetwork(testConfig, normalizedTrainingSet);
         network.train();
         System.out.println(network.toString());
+
+
+        System.out.println("Loading testing data...");
+        Instances testingSet = loadDataSet(Application.TWOCLASS_TESTING_DATA_PATH);
+        testingSet.randomize(new Debug.Random(1));
+        filter.setInputFormat(testingSet);
+        Instances normalizedTestingSet = Filter.useFilter(testingSet, filter);
+        normalizedTestingSet.setClassIndex(normalizedTestingSet.numAttributes() - 1);
+        System.out.println("Testing data loaded");
+
+        network.predictClass(normalizedTestingSet.get(0));
+
 
     }
 

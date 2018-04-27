@@ -39,7 +39,7 @@ public class TestConfigs {
         config1.setOutputLayerThreshold(0.1);
         config1.setOutputLayerTransformFunction('s');
         config1.setLearningRate(0.9);
-        config1.setNumberOfEpochs(100);
+        config1.setNumberOfEpochs(10);
         this.networkConfigs.add(config1);
     }
 }
