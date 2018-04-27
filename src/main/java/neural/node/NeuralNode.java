@@ -17,7 +17,35 @@ public class NeuralNode {
     private Double activatedValue = 0D;
     private Double thresholdValue = 0D;
     private Double outputValue = 0D;
+    private Double targetValue;
+
+    private Double errorValue = 0D;
+
     private char transformFunction;
+
+    public Double getActivatedValue() {
+        return activatedValue;
+    }
+
+    public void setActivatedValue(Double activatedValue) {
+        this.activatedValue = activatedValue;
+    }
+
+    public Double getTargetValue() {
+        return targetValue;
+    }
+
+    public void setTargetValue(Double targetValue) {
+        this.targetValue = targetValue;
+    }
+
+    public Double getErrorValue() {
+        return errorValue;
+    }
+
+    public void setErrorValue(Double errorValue) {
+        this.errorValue = errorValue;
+    }
 
     public char getTransformFunction() {
         return transformFunction;
@@ -45,6 +73,16 @@ public class NeuralNode {
                 break;
             default:
                 this.outputValue = this.activatedValue;
+        }
+    }
+
+    public void backPropagateError() {
+        switch (this.transformFunction) {
+            case 's':
+                this.errorValue = this.getErrorValue(this.getDerivativeForSigmoid(this.outputValue));
+                break;
+            default:
+                this.errorValue = this.getErrorValue(1D);
         }
     }
 
@@ -99,17 +137,47 @@ public class NeuralNode {
     public NeuralNode(NeuralLayer layer) {
         this.layer = layer;
         this.id = ++NeuralNode.count;
-        this.incomingConnections = new ArrayList<NeuralConnection>();
-        this.outgoingConnections = new ArrayList<NeuralConnection>();
-        this.transformFunction = layer.getTransformFunction();
-        this.thresholdValue = layer.getThreshold();
+        this.initializeNeuralNode();
+    }
+
+    public NeuralNode(NeuralLayer layer, Double targetValue) {
+        this.layer = layer;
+        this.id = ++NeuralNode.count;
+        this.targetValue = targetValue;
+        this.initializeNeuralNode();
     }
 
     public void updateValue(Double delta) {
         this.outputValue += delta;
     }
 
+    private void initializeNeuralNode() {
+        this.incomingConnections = new ArrayList<NeuralConnection>();
+        this.outgoingConnections = new ArrayList<NeuralConnection>();
+        this.transformFunction = layer.getTransformFunction();
+        this.thresholdValue = layer.getThreshold();
+    }
+
+    private Double getErrorValue(Double delta) {
+        Double currentErrorValue = 0D;
+        if (null != this.targetValue) {
+            //  output node
+            currentErrorValue = (this.targetValue - this.outputValue) * delta;
+        } else {
+            for (NeuralConnection connection : this.outgoingConnections) {
+                //  this node is node A in the connection
+                NeuralNode nodeConnectedTo = connection.getNodeB();
+                currentErrorValue += connection.getWeight() * nodeConnectedTo.getErrorValue() * delta;
+            }
+        }
+        return currentErrorValue;
+    }
+
     private Double transformSigmoid() {
         return 1 / (1 + (Math.exp(this.activatedValue)));
+    }
+
+    private Double getDerivativeForSigmoid(Double value) {
+        return value * (1D - value);
     }
 }

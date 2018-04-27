@@ -10,9 +10,7 @@ public class TestConfigs {
     private Integer numberOfInputUnits;
     private Integer numberOfOutputUnits;
 
-    public TestConfigs(Integer numberOfInputUnits, Integer numberOfOutputUnits) {
-        this.numberOfInputUnits = numberOfInputUnits;
-        this.numberOfOutputUnits = numberOfOutputUnits;
+    public TestConfigs() {
         this.initializeTestConfigs();
     }
 
@@ -30,13 +28,13 @@ public class TestConfigs {
     }
 
     private void initializeTestConfig1() {
-        Integer numberOfHiddenUnits = (this.numberOfInputUnits + this.numberOfOutputUnits) / 2;
+        Integer numberOfHiddenUnits = 2;
         HiddenLayerConfig hConfig1 = new HiddenLayerConfig(numberOfHiddenUnits, 's');
         hConfig1.setThreshold(0.3D);
         ArrayList<HiddenLayerConfig> hConfigs = new ArrayList<HiddenLayerConfig>();
         hConfigs.add(hConfig1);
 
-        NeuralNetworkConfig config1 = new NeuralNetworkConfig(this.numberOfInputUnits, this.numberOfOutputUnits, hConfigs);
+        NeuralNetworkConfig config1 = new NeuralNetworkConfig(hConfigs);
         config1.setOutputLayerTransformFunction('s');
         this.networkConfigs.add(config1);
     }

@@ -4,15 +4,24 @@ import java.util.ArrayList;
 
 public class NeuralNetworkConfig {
     //    input layer
-    private Integer numberOfInputUnits;
     private char inputLayerTransformFunction;
     private Double inputLayerThreshold = 0D;
     //    output layer
-    private Integer numberOfOutputUnits;
     private char outputLayerTransformFunction;
     private Double outputLayerThreshold = 0D;
     //    hidden layer
     private ArrayList<HiddenLayerConfig> hiddenLayerConfigs;
+
+    private Double learningRate = 0.3D;
+
+    public Double getLearningRate() {
+        return learningRate;
+    }
+
+    public void setLearningRate(Double learningRate) {
+        this.learningRate = learningRate;
+    }
+
 
     public Double getInputLayerThreshold() {
         return inputLayerThreshold;
@@ -47,26 +56,8 @@ public class NeuralNetworkConfig {
         this.outputLayerTransformFunction = outputLayerTransformFunction;
     }
 
-    public NeuralNetworkConfig(Integer numberOfInputUnits, Integer numberOfOutputUnits, ArrayList<HiddenLayerConfig> hiddenLayerConfigs) {
-        this.numberOfInputUnits = numberOfInputUnits;
-        this.numberOfOutputUnits = numberOfOutputUnits;
+    public NeuralNetworkConfig(ArrayList<HiddenLayerConfig> hiddenLayerConfigs) {
         this.hiddenLayerConfigs = hiddenLayerConfigs;
-    }
-
-    public Integer getNumberOfInputUnits() {
-        return numberOfInputUnits;
-    }
-
-    public void setNumberOfInputUnits(Integer numberOfInputUnits) {
-        this.numberOfInputUnits = numberOfInputUnits;
-    }
-
-    public Integer getNumberOfOutputUnits() {
-        return numberOfOutputUnits;
-    }
-
-    public void setNumberOfOutputUnits(Integer numberOfOutputUnits) {
-        this.numberOfOutputUnits = numberOfOutputUnits;
     }
 
     public ArrayList<HiddenLayerConfig> getHiddenLayerConfigs() {

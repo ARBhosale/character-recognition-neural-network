@@ -1,5 +1,6 @@
 package neural.layer;
 
+import neural.network.NeuralNetworkConfig;
 import neural.node.NeuralNode;
 
 import java.util.ArrayList;
@@ -11,12 +12,14 @@ public class NeuralLayer {
     private char transformFunction;
     private ArrayList<NeuralNode> neuralNodes;
     private Double threshold = 0D;
+    private Double learningRate = 0D;
 
-    public NeuralLayer(Integer numberOfNodes, char transformFunction, Double threshold) {
+    public NeuralLayer(Integer numberOfNodes, char transformFunction, Double threshold, Double learningRate) {
         this.id = ++NeuralLayer.count;
         this.numberOfNodes = numberOfNodes;
         this.transformFunction = transformFunction;
         this.threshold = threshold;
+        this.learningRate = learningRate;
         this.initializeNeuralNodes();
     }
 
