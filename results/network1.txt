@@ -1,0 +1,1019 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/bin/java -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:52962,suspend=y,server=n -javaagent:/Users/aniketbhosale/Library/Caches/IdeaIC2018.1/captureAgent/debugger-agent.jar=file:/private/var/folders/dk/crf7_3kd6hq9nnxw4zf38ktm0000gn/T/capture.props -Dfile.encoding=UTF-8 -classpath "/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/lib/tools.jar:/Users/aniketbhosale/Documents/sem4/cs 782/Project/my nn/mlcs782handwrittencharacterrecognition/target/classes:/Users/aniketbhosale/.m2/repository/nz/ac/waikato/cms/weka/weka-stable/3.8.0/weka-stable-3.8.0.jar:/Users/aniketbhosale/.m2/repository/nz/ac/waikato/cms/weka/thirdparty/java-cup-11b/2015.03.26/java-cup-11b-2015.03.26.jar:/Users/aniketbhosale/.m2/repository/nz/ac/waikato/cms/weka/thirdparty/java-cup-11b-runtime/2015.03.26/java-cup-11b-runtime-2015.03.26.jar:/Users/aniketbhosale/.m2/repository/nz/ac/waikato/cms/weka/thirdparty/bounce/0.18/bounce-0.18.jar:/Users/aniketbhosale/.m2/repository/com/googlecode/matrix-toolkits-java/mtj/1.0.4/mtj-1.0.4.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_ref-osx-x86_64/1.1/netlib-native_ref-osx-x86_64-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/native_ref-java/1.1/native_ref-java-1.1.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/jniloader/1.1/jniloader-1.1.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_ref-linux-x86_64/1.1/netlib-native_ref-linux-x86_64-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_ref-linux-i686/1.1/netlib-native_ref-linux-i686-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_ref-win-x86_64/1.1/netlib-native_ref-win-x86_64-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_ref-win-i686/1.1/netlib-native_ref-win-i686-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_ref-linux-armhf/1.1/netlib-native_ref-linux-armhf-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_system-osx-x86_64/1.1/netlib-native_system-osx-x86_64-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/native_system-java/1.1/native_system-java-1.1.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_system-linux-x86_64/1.1/netlib-native_system-linux-x86_64-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_system-linux-i686/1.1/netlib-native_system-linux-i686-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_system-linux-armhf/1.1/netlib-native_system-linux-armhf-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_system-win-x86_64/1.1/netlib-native_system-win-x86_64-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/netlib-native_system-win-i686/1.1/netlib-native_system-win-i686-1.1-natives.jar:/Users/aniketbhosale/.m2/repository/net/sourceforge/f2j/arpack_combined_all/0.1/arpack_combined_all-0.1.jar:/Users/aniketbhosale/.m2/repository/com/googlecode/netlib-java/netlib-java/1.1/netlib-java-1.1.jar:/Users/aniketbhosale/.m2/repository/com/github/fommil/netlib/core/1.1/core-1.1.jar:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar" Application
+objc[59006]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/bin/java (0x1029454c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1041ba4e0). One of the two will be used. Which one is undefined.
+Connected to the target VM, address: '127.0.0.1:52962', transport: 'socket'
+Start!
+Loading training data...
+Training data prepared in 2151 milliseconds
+NeuralNetwork{networkConfig=NeuralNetworkConfig{inputLayerTransformFunction=, inputLayerThreshold=0.1, outputLayerTransformFunction=s, outputLayerThreshold=0.1, learningRate=0.4, numberOfEpochs=500}}
+Starting training
+Epoch: 0
+Sum of square errors: 45.0286771434935
+Epoch: 1
+Sum of square errors: 45.028677143493255
+Epoch: 2
+Sum of square errors: 45.028677143493006
+Epoch: 3
+Sum of square errors: 45.02867714349274
+Epoch: 4
+Sum of square errors: 45.02867714349249
+Epoch: 5
+Sum of square errors: 45.028677143492246
+Epoch: 6
+Sum of square errors: 45.028677143491976
+Epoch: 7
+Sum of square errors: 45.02867714349173
+Epoch: 8
+Sum of square errors: 45.02867714349148
+Epoch: 9
+Sum of square errors: 45.02867714349123
+Epoch: 10
+Sum of square errors: 45.02867714349098
+Epoch: 11
+Sum of square errors: 45.02867714349073
+Epoch: 12
+Sum of square errors: 45.02867714349048
+Epoch: 13
+Sum of square errors: 45.02867714349022
+Epoch: 14
+Sum of square errors: 45.02867714348998
+Epoch: 15
+Sum of square errors: 45.02867714348972
+Epoch: 16
+Sum of square errors: 45.028677143489475
+Epoch: 17
+Sum of square errors: 45.028677143489226
+Epoch: 18
+Sum of square errors: 45.02867714348898
+Epoch: 19
+Sum of square errors: 45.02867714348872
+Epoch: 20
+Sum of square errors: 45.028677143488466
+Epoch: 21
+Sum of square errors: 45.0286771434882
+Epoch: 22
+Sum of square errors: 45.02867714348795
+Epoch: 23
+Sum of square errors: 45.028677143487705
+Epoch: 24
+Sum of square errors: 45.02867714348746
+Epoch: 25
+Sum of square errors: 45.02867714348721
+Epoch: 26
+Sum of square errors: 45.02867714348695
+Epoch: 27
+Sum of square errors: 45.02867714348669
+Epoch: 28
+Sum of square errors: 45.02867714348644
+Epoch: 29
+Sum of square errors: 45.02867714348619
+Epoch: 30
+Sum of square errors: 45.028677143485936
+Epoch: 31
+Sum of square errors: 45.028677143485695
+Epoch: 32
+Sum of square errors: 45.02867714348543
+Epoch: 33
+Sum of square errors: 45.028677143485176
+Epoch: 34
+Sum of square errors: 45.02867714348492
+Epoch: 35
+Sum of square errors: 45.02867714348467
+Epoch: 36
+Sum of square errors: 45.028677143484416
+Epoch: 37
+Sum of square errors: 45.02867714348417
+Epoch: 38
+Sum of square errors: 45.028677143483925
+Epoch: 39
+Sum of square errors: 45.02867714348366
+Epoch: 40
+Sum of square errors: 45.02867714348341
+Epoch: 41
+Sum of square errors: 45.02867714348316
+Epoch: 42
+Sum of square errors: 45.028677143482895
+Epoch: 43
+Sum of square errors: 45.028677143482646
+Epoch: 44
+Sum of square errors: 45.02867714348239
+Epoch: 45
+Sum of square errors: 45.02867714348214
+Epoch: 46
+Sum of square errors: 45.028677143481886
+Epoch: 47
+Sum of square errors: 45.02867714348164
+Epoch: 48
+Sum of square errors: 45.02867714348138
+Epoch: 49
+Sum of square errors: 45.02867714348114
+Epoch: 50
+Sum of square errors: 45.028677143480884
+Epoch: 51
+Sum of square errors: 45.02867714348063
+Epoch: 52
+Sum of square errors: 45.02867714348037
+Epoch: 53
+Sum of square errors: 45.028677143480124
+Epoch: 54
+Sum of square errors: 45.028677143479875
+Epoch: 55
+Sum of square errors: 45.02867714347961
+Epoch: 56
+Sum of square errors: 45.02867714347936
+Epoch: 57
+Sum of square errors: 45.0286771434791
+Epoch: 58
+Sum of square errors: 45.028677143478845
+Epoch: 59
+Sum of square errors: 45.02867714347859
+Epoch: 60
+Sum of square errors: 45.02867714347833
+Epoch: 61
+Sum of square errors: 45.02867714347809
+Epoch: 62
+Sum of square errors: 45.02867714347784
+Epoch: 63
+Sum of square errors: 45.0286771434776
+Epoch: 64
+Sum of square errors: 45.028677143477346
+Epoch: 65
+Sum of square errors: 45.02867714347707
+Epoch: 66
+Sum of square errors: 45.02867714347683
+Epoch: 67
+Sum of square errors: 45.02867714347658
+Epoch: 68
+Sum of square errors: 45.02867714347632
+Epoch: 69
+Sum of square errors: 45.02867714347607
+Epoch: 70
+Sum of square errors: 45.02867714347582
+Epoch: 71
+Sum of square errors: 45.028677143475555
+Epoch: 72
+Sum of square errors: 45.028677143475306
+Epoch: 73
+Sum of square errors: 45.02867714347504
+Epoch: 74
+Sum of square errors: 45.02867714347479
+Epoch: 75
+Sum of square errors: 45.028677143474546
+Epoch: 76
+Sum of square errors: 45.0286771434743
+Epoch: 77
+Sum of square errors: 45.02867714347404
+Epoch: 78
+Sum of square errors: 45.028677143473786
+Epoch: 79
+Sum of square errors: 45.02867714347354
+Epoch: 80
+Sum of square errors: 45.02867714347328
+Epoch: 81
+Sum of square errors: 45.02867714347303
+Epoch: 82
+Sum of square errors: 45.02867714347277
+Epoch: 83
+Sum of square errors: 45.0286771434725
+Epoch: 84
+Sum of square errors: 45.02867714347226
+Epoch: 85
+Sum of square errors: 45.028677143472
+Epoch: 86
+Sum of square errors: 45.028677143471754
+Epoch: 87
+Sum of square errors: 45.0286771434715
+Epoch: 88
+Sum of square errors: 45.028677143471235
+Epoch: 89
+Sum of square errors: 45.02867714347099
+Epoch: 90
+Sum of square errors: 45.028677143470745
+Epoch: 91
+Sum of square errors: 45.02867714347048
+Epoch: 92
+Sum of square errors: 45.028677143470226
+Epoch: 93
+Sum of square errors: 45.02867714346998
+Epoch: 94
+Sum of square errors: 45.02867714346972
+Epoch: 95
+Sum of square errors: 45.02867714346948
+Epoch: 96
+Sum of square errors: 45.02867714346922
+Epoch: 97
+Sum of square errors: 45.02867714346895
+Epoch: 98
+Sum of square errors: 45.02867714346869
+Epoch: 99
+Sum of square errors: 45.02867714346845
+Epoch: 100
+Sum of square errors: 45.028677143468194
+Epoch: 101
+Sum of square errors: 45.028677143467945
+Epoch: 102
+Sum of square errors: 45.02867714346769
+Epoch: 103
+Sum of square errors: 45.028677143467426
+Epoch: 104
+Sum of square errors: 45.028677143467185
+Epoch: 105
+Sum of square errors: 45.02867714346692
+Epoch: 106
+Sum of square errors: 45.02867714346667
+Epoch: 107
+Sum of square errors: 45.028677143466425
+Epoch: 108
+Sum of square errors: 45.02867714346616
+Epoch: 109
+Sum of square errors: 45.02867714346591
+Epoch: 110
+Sum of square errors: 45.028677143465664
+Epoch: 111
+Sum of square errors: 45.02867714346539
+Epoch: 112
+Sum of square errors: 45.02867714346514
+Epoch: 113
+Sum of square errors: 45.02867714346489
+Epoch: 114
+Sum of square errors: 45.028677143464634
+Epoch: 115
+Sum of square errors: 45.02867714346439
+Epoch: 116
+Sum of square errors: 45.028677143464144
+Epoch: 117
+Sum of square errors: 45.02867714346388
+Epoch: 118
+Sum of square errors: 45.028677143463625
+Epoch: 119
+Sum of square errors: 45.02867714346336
+Epoch: 120
+Sum of square errors: 45.0286771434631
+Epoch: 121
+Sum of square errors: 45.02867714346286
+Epoch: 122
+Sum of square errors: 45.02867714346259
+Epoch: 123
+Sum of square errors: 45.02867714346233
+Epoch: 124
+Sum of square errors: 45.02867714346207
+Epoch: 125
+Sum of square errors: 45.02867714346181
+Epoch: 126
+Sum of square errors: 45.028677143461564
+Epoch: 127
+Sum of square errors: 45.02867714346131
+Epoch: 128
+Sum of square errors: 45.02867714346105
+Epoch: 129
+Sum of square errors: 45.0286771434608
+Epoch: 130
+Sum of square errors: 45.02867714346054
+Epoch: 131
+Sum of square errors: 45.028677143460285
+Epoch: 132
+Sum of square errors: 45.02867714346004
+Epoch: 133
+Sum of square errors: 45.028677143459795
+Epoch: 134
+Sum of square errors: 45.02867714345953
+Epoch: 135
+Sum of square errors: 45.02867714345927
+Epoch: 136
+Sum of square errors: 45.02867714345901
+Epoch: 137
+Sum of square errors: 45.02867714345875
+Epoch: 138
+Sum of square errors: 45.0286771434585
+Epoch: 139
+Sum of square errors: 45.02867714345826
+Epoch: 140
+Sum of square errors: 45.028677143458
+Epoch: 141
+Sum of square errors: 45.02867714345774
+Epoch: 142
+Sum of square errors: 45.028677143457486
+Epoch: 143
+Sum of square errors: 45.02867714345723
+Epoch: 144
+Sum of square errors: 45.02867714345698
+Epoch: 145
+Sum of square errors: 45.028677143456726
+Epoch: 146
+Sum of square errors: 45.02867714345646
+Epoch: 147
+Sum of square errors: 45.028677143456214
+Epoch: 148
+Sum of square errors: 45.028677143455965
+Epoch: 149
+Sum of square errors: 45.02867714345569
+Epoch: 150
+Sum of square errors: 45.02867714345543
+Epoch: 151
+Sum of square errors: 45.02867714345518
+Epoch: 152
+Sum of square errors: 45.02867714345493
+Epoch: 153
+Sum of square errors: 45.02867714345467
+Epoch: 154
+Sum of square errors: 45.02867714345443
+Epoch: 155
+Sum of square errors: 45.028677143454175
+Epoch: 156
+Sum of square errors: 45.02867714345391
+Epoch: 157
+Sum of square errors: 45.02867714345365
+Epoch: 158
+Sum of square errors: 45.0286771434534
+Epoch: 159
+Sum of square errors: 45.02867714345315
+Epoch: 160
+Sum of square errors: 45.028677143452896
+Epoch: 161
+Sum of square errors: 45.028677143452626
+Epoch: 162
+Sum of square errors: 45.02867714345236
+Epoch: 163
+Sum of square errors: 45.02867714345211
+Epoch: 164
+Sum of square errors: 45.028677143451844
+Epoch: 165
+Sum of square errors: 45.02867714345159
+Epoch: 166
+Sum of square errors: 45.02867714345134
+Epoch: 167
+Sum of square errors: 45.02867714345108
+Epoch: 168
+Sum of square errors: 45.02867714345082
+Epoch: 169
+Sum of square errors: 45.02867714345056
+Epoch: 170
+Sum of square errors: 45.02867714345032
+Epoch: 171
+Sum of square errors: 45.028677143450075
+Epoch: 172
+Sum of square errors: 45.028677143449805
+Epoch: 173
+Sum of square errors: 45.02867714344955
+Epoch: 174
+Sum of square errors: 45.02867714344929
+Epoch: 175
+Sum of square errors: 45.02867714344902
+Epoch: 176
+Sum of square errors: 45.028677143448775
+Epoch: 177
+Sum of square errors: 45.02867714344852
+Epoch: 178
+Sum of square errors: 45.028677143448256
+Epoch: 179
+Sum of square errors: 45.02867714344802
+Epoch: 180
+Sum of square errors: 45.02867714344776
+Epoch: 181
+Sum of square errors: 45.0286771434475
+Epoch: 182
+Sum of square errors: 45.02867714344725
+Epoch: 183
+Sum of square errors: 45.028677143446984
+Epoch: 184
+Sum of square errors: 45.028677143446735
+Epoch: 185
+Sum of square errors: 45.02867714344649
+Epoch: 186
+Sum of square errors: 45.028677143446224
+Epoch: 187
+Sum of square errors: 45.02867714344597
+Epoch: 188
+Sum of square errors: 45.0286771434457
+Epoch: 189
+Sum of square errors: 45.02867714344544
+Epoch: 190
+Sum of square errors: 45.028677143445194
+Epoch: 191
+Sum of square errors: 45.02867714344494
+Epoch: 192
+Sum of square errors: 45.028677143444675
+Epoch: 193
+Sum of square errors: 45.028677143444426
+Epoch: 194
+Sum of square errors: 45.02867714344417
+Epoch: 195
+Sum of square errors: 45.0286771434439
+Epoch: 196
+Sum of square errors: 45.028677143443645
+Epoch: 197
+Sum of square errors: 45.028677143443396
+Epoch: 198
+Sum of square errors: 45.02867714344314
+Epoch: 199
+Sum of square errors: 45.028677143442884
+Epoch: 200
+Sum of square errors: 45.02867714344263
+Epoch: 201
+Sum of square errors: 45.02867714344237
+Epoch: 202
+Sum of square errors: 45.02867714344211
+Epoch: 203
+Sum of square errors: 45.02867714344186
+Epoch: 204
+Sum of square errors: 45.0286771434416
+Epoch: 205
+Sum of square errors: 45.02867714344134
+Epoch: 206
+Sum of square errors: 45.028677143441094
+Epoch: 207
+Sum of square errors: 45.02867714344084
+Epoch: 208
+Sum of square errors: 45.028677143440575
+Epoch: 209
+Sum of square errors: 45.02867714344032
+Epoch: 210
+Sum of square errors: 45.02867714344005
+Epoch: 211
+Sum of square errors: 45.02867714343979
+Epoch: 212
+Sum of square errors: 45.02867714343954
+Epoch: 213
+Sum of square errors: 45.02867714343928
+Epoch: 214
+Sum of square errors: 45.028677143439026
+Epoch: 215
+Sum of square errors: 45.02867714343876
+Epoch: 216
+Sum of square errors: 45.028677143438514
+Epoch: 217
+Sum of square errors: 45.02867714343826
+Epoch: 218
+Sum of square errors: 45.028677143438
+Epoch: 219
+Sum of square errors: 45.02867714343775
+Epoch: 220
+Sum of square errors: 45.028677143437484
+Epoch: 221
+Sum of square errors: 45.02867714343722
+Epoch: 222
+Sum of square errors: 45.02867714343697
+Epoch: 223
+Sum of square errors: 45.02867714343671
+Epoch: 224
+Sum of square errors: 45.028677143436454
+Epoch: 225
+Sum of square errors: 45.02867714343619
+Epoch: 226
+Sum of square errors: 45.02867714343594
+Epoch: 227
+Sum of square errors: 45.02867714343567
+Epoch: 228
+Sum of square errors: 45.02867714343541
+Epoch: 229
+Sum of square errors: 45.02867714343516
+Epoch: 230
+Sum of square errors: 45.02867714343491
+Epoch: 231
+Sum of square errors: 45.028677143434656
+Epoch: 232
+Sum of square errors: 45.0286771434344
+Epoch: 233
+Sum of square errors: 45.02867714343413
+Epoch: 234
+Sum of square errors: 45.028677143433875
+Epoch: 235
+Sum of square errors: 45.02867714343363
+Epoch: 236
+Sum of square errors: 45.02867714343337
+Epoch: 237
+Sum of square errors: 45.028677143433114
+Epoch: 238
+Sum of square errors: 45.02867714343286
+Epoch: 239
+Sum of square errors: 45.028677143432596
+Epoch: 240
+Sum of square errors: 45.02867714343234
+Epoch: 241
+Sum of square errors: 45.02867714343207
+Epoch: 242
+Sum of square errors: 45.028677143431814
+Epoch: 243
+Sum of square errors: 45.028677143431565
+Epoch: 244
+Sum of square errors: 45.02867714343131
+Epoch: 245
+Sum of square errors: 45.02867714343105
+Epoch: 246
+Sum of square errors: 45.02867714343079
+Epoch: 247
+Sum of square errors: 45.028677143430535
+Epoch: 248
+Sum of square errors: 45.028677143430286
+Epoch: 249
+Sum of square errors: 45.028677143430016
+Epoch: 250
+Sum of square errors: 45.02867714342976
+Epoch: 251
+Sum of square errors: 45.02867714342951
+Epoch: 252
+Sum of square errors: 45.02867714342925
+Epoch: 253
+Sum of square errors: 45.02867714342899
+Epoch: 254
+Sum of square errors: 45.02867714342872
+Epoch: 255
+Sum of square errors: 45.02867714342847
+Epoch: 256
+Sum of square errors: 45.0286771434282
+Epoch: 257
+Sum of square errors: 45.028677143427934
+Epoch: 258
+Sum of square errors: 45.028677143427686
+Epoch: 259
+Sum of square errors: 45.02867714342742
+Epoch: 260
+Sum of square errors: 45.02867714342717
+Epoch: 261
+Sum of square errors: 45.02867714342691
+Epoch: 262
+Sum of square errors: 45.028677143426656
+Epoch: 263
+Sum of square errors: 45.02867714342639
+Epoch: 264
+Sum of square errors: 45.028677143426144
+Epoch: 265
+Sum of square errors: 45.028677143425874
+Epoch: 266
+Sum of square errors: 45.028677143425625
+Epoch: 267
+Sum of square errors: 45.02867714342536
+Epoch: 268
+Sum of square errors: 45.0286771434251
+Epoch: 269
+Sum of square errors: 45.028677143424844
+Epoch: 270
+Sum of square errors: 45.02867714342458
+Epoch: 271
+Sum of square errors: 45.028677143424325
+Epoch: 272
+Sum of square errors: 45.02867714342406
+Epoch: 273
+Sum of square errors: 45.028677143423806
+Epoch: 274
+Sum of square errors: 45.02867714342355
+Epoch: 275
+Sum of square errors: 45.02867714342329
+Epoch: 276
+Sum of square errors: 45.02867714342304
+Epoch: 277
+Sum of square errors: 45.028677143422776
+Epoch: 278
+Sum of square errors: 45.02867714342252
+Epoch: 279
+Sum of square errors: 45.02867714342225
+Epoch: 280
+Sum of square errors: 45.028677143421994
+Epoch: 281
+Sum of square errors: 45.02867714342173
+Epoch: 282
+Sum of square errors: 45.028677143421476
+Epoch: 283
+Sum of square errors: 45.02867714342122
+Epoch: 284
+Sum of square errors: 45.02867714342097
+Epoch: 285
+Sum of square errors: 45.0286771434207
+Epoch: 286
+Sum of square errors: 45.028677143420445
+Epoch: 287
+Sum of square errors: 45.028677143420175
+Epoch: 288
+Sum of square errors: 45.02867714341992
+Epoch: 289
+Sum of square errors: 45.02867714341967
+Epoch: 290
+Sum of square errors: 45.02867714341941
+Epoch: 291
+Sum of square errors: 45.02867714341915
+Epoch: 292
+Sum of square errors: 45.02867714341889
+Epoch: 293
+Sum of square errors: 45.02867714341864
+Epoch: 294
+Sum of square errors: 45.02867714341837
+Epoch: 295
+Sum of square errors: 45.02867714341811
+Epoch: 296
+Sum of square errors: 45.02867714341785
+Epoch: 297
+Sum of square errors: 45.0286771434176
+Epoch: 298
+Sum of square errors: 45.02867714341734
+Epoch: 299
+Sum of square errors: 45.028677143417084
+Epoch: 300
+Sum of square errors: 45.02867714341681
+Epoch: 301
+Sum of square errors: 45.02867714341655
+Epoch: 302
+Sum of square errors: 45.02867714341629
+Epoch: 303
+Sum of square errors: 45.028677143416026
+Epoch: 304
+Sum of square errors: 45.02867714341578
+Epoch: 305
+Sum of square errors: 45.02867714341551
+Epoch: 306
+Sum of square errors: 45.02867714341526
+Epoch: 307
+Sum of square errors: 45.028677143414995
+Epoch: 308
+Sum of square errors: 45.02867714341474
+Epoch: 309
+Sum of square errors: 45.02867714341448
+Epoch: 310
+Sum of square errors: 45.02867714341422
+Epoch: 311
+Sum of square errors: 45.02867714341396
+Epoch: 312
+Sum of square errors: 45.0286771434137
+Epoch: 313
+Sum of square errors: 45.02867714341344
+Epoch: 314
+Sum of square errors: 45.02867714341319
+Epoch: 315
+Sum of square errors: 45.02867714341293
+Epoch: 316
+Sum of square errors: 45.02867714341267
+Epoch: 317
+Sum of square errors: 45.028677143412416
+Epoch: 318
+Sum of square errors: 45.028677143412146
+Epoch: 319
+Sum of square errors: 45.0286771434119
+Epoch: 320
+Sum of square errors: 45.02867714341162
+Epoch: 321
+Sum of square errors: 45.02867714341137
+Epoch: 322
+Sum of square errors: 45.028677143411116
+Epoch: 323
+Sum of square errors: 45.028677143410846
+Epoch: 324
+Sum of square errors: 45.02867714341059
+Epoch: 325
+Sum of square errors: 45.02867714341032
+Epoch: 326
+Sum of square errors: 45.028677143410064
+Epoch: 327
+Sum of square errors: 45.02867714340981
+Epoch: 328
+Sum of square errors: 45.02867714340955
+Epoch: 329
+Sum of square errors: 45.02867714340929
+Epoch: 330
+Sum of square errors: 45.028677143409034
+Epoch: 331
+Sum of square errors: 45.02867714340877
+Epoch: 332
+Sum of square errors: 45.02867714340851
+Epoch: 333
+Sum of square errors: 45.02867714340826
+Epoch: 334
+Sum of square errors: 45.02867714340799
+Epoch: 335
+Sum of square errors: 45.02867714340772
+Epoch: 336
+Sum of square errors: 45.02867714340747
+Epoch: 337
+Sum of square errors: 45.02867714340721
+Epoch: 338
+Sum of square errors: 45.028677143406945
+Epoch: 339
+Sum of square errors: 45.02867714340668
+Epoch: 340
+Sum of square errors: 45.02867714340642
+Epoch: 341
+Sum of square errors: 45.02867714340616
+Epoch: 342
+Sum of square errors: 45.02867714340591
+Epoch: 343
+Sum of square errors: 45.02867714340565
+Epoch: 344
+Sum of square errors: 45.02867714340539
+Epoch: 345
+Sum of square errors: 45.028677143405126
+Epoch: 346
+Sum of square errors: 45.02867714340487
+Epoch: 347
+Sum of square errors: 45.02867714340459
+Epoch: 348
+Sum of square errors: 45.02867714340433
+Epoch: 349
+Sum of square errors: 45.02867714340408
+Epoch: 350
+Sum of square errors: 45.02867714340381
+Epoch: 351
+Sum of square errors: 45.028677143403556
+Epoch: 352
+Sum of square errors: 45.02867714340329
+Epoch: 353
+Sum of square errors: 45.028677143403044
+Epoch: 354
+Sum of square errors: 45.02867714340279
+Epoch: 355
+Sum of square errors: 45.02867714340251
+Epoch: 356
+Sum of square errors: 45.02867714340227
+Epoch: 357
+Sum of square errors: 45.028677143401985
+Epoch: 358
+Sum of square errors: 45.02867714340173
+Epoch: 359
+Sum of square errors: 45.02867714340147
+Epoch: 360
+Sum of square errors: 45.02867714340121
+Epoch: 361
+Sum of square errors: 45.02867714340095
+Epoch: 362
+Sum of square errors: 45.028677143400685
+Epoch: 363
+Sum of square errors: 45.02867714340042
+Epoch: 364
+Sum of square errors: 45.02867714340016
+Epoch: 365
+Sum of square errors: 45.02867714339991
+Epoch: 366
+Sum of square errors: 45.028677143399634
+Epoch: 367
+Sum of square errors: 45.028677143399385
+Epoch: 368
+Sum of square errors: 45.02867714339913
+Epoch: 369
+Sum of square errors: 45.02867714339886
+Epoch: 370
+Sum of square errors: 45.0286771433986
+Epoch: 371
+Sum of square errors: 45.02867714339835
+Epoch: 372
+Sum of square errors: 45.028677143398085
+Epoch: 373
+Sum of square errors: 45.02867714339782
+Epoch: 374
+Sum of square errors: 45.02867714339756
+Epoch: 375
+Sum of square errors: 45.028677143397296
+Epoch: 376
+Sum of square errors: 45.02867714339703
+Epoch: 377
+Sum of square errors: 45.02867714339677
+Epoch: 378
+Sum of square errors: 45.02867714339651
+Epoch: 379
+Sum of square errors: 45.028677143396244
+Epoch: 380
+Sum of square errors: 45.028677143395996
+Epoch: 381
+Sum of square errors: 45.02867714339573
+Epoch: 382
+Sum of square errors: 45.02867714339546
+Epoch: 383
+Sum of square errors: 45.028677143395214
+Epoch: 384
+Sum of square errors: 45.028677143394944
+Epoch: 385
+Sum of square errors: 45.02867714339469
+Epoch: 386
+Sum of square errors: 45.028677143394425
+Epoch: 387
+Sum of square errors: 45.028677143394155
+Epoch: 388
+Sum of square errors: 45.02867714339389
+Epoch: 389
+Sum of square errors: 45.02867714339362
+Epoch: 390
+Sum of square errors: 45.028677143393374
+Epoch: 391
+Sum of square errors: 45.02867714339311
+Epoch: 392
+Sum of square errors: 45.028677143392855
+Epoch: 393
+Sum of square errors: 45.02867714339257
+Epoch: 394
+Sum of square errors: 45.028677143392315
+Epoch: 395
+Sum of square errors: 45.02867714339205
+Epoch: 396
+Sum of square errors: 45.02867714339179
+Epoch: 397
+Sum of square errors: 45.02867714339153
+Epoch: 398
+Sum of square errors: 45.02867714339127
+Epoch: 399
+Sum of square errors: 45.02867714339102
+Epoch: 400
+Sum of square errors: 45.02867714339076
+Epoch: 401
+Sum of square errors: 45.02867714339049
+Epoch: 402
+Sum of square errors: 45.028677143390226
+Epoch: 403
+Sum of square errors: 45.028677143389956
+Epoch: 404
+Sum of square errors: 45.0286771433897
+Epoch: 405
+Sum of square errors: 45.02867714338944
+Epoch: 406
+Sum of square errors: 45.02867714338919
+Epoch: 407
+Sum of square errors: 45.028677143388926
+Epoch: 408
+Sum of square errors: 45.02867714338866
+Epoch: 409
+Sum of square errors: 45.02867714338839
+Epoch: 410
+Sum of square errors: 45.02867714338813
+Epoch: 411
+Sum of square errors: 45.02867714338787
+Epoch: 412
+Sum of square errors: 45.02867714338761
+Epoch: 413
+Sum of square errors: 45.02867714338735
+Epoch: 414
+Sum of square errors: 45.02867714338709
+Epoch: 415
+Sum of square errors: 45.028677143386815
+Epoch: 416
+Sum of square errors: 45.02867714338656
+Epoch: 417
+Sum of square errors: 45.0286771433863
+Epoch: 418
+Sum of square errors: 45.02867714338605
+Epoch: 419
+Sum of square errors: 45.02867714338578
+Epoch: 420
+Sum of square errors: 45.028677143385515
+Epoch: 421
+Sum of square errors: 45.02867714338525
+Epoch: 422
+Sum of square errors: 45.02867714338499
+Epoch: 423
+Sum of square errors: 45.02867714338474
+Epoch: 424
+Sum of square errors: 45.02867714338446
+Epoch: 425
+Sum of square errors: 45.02867714338421
+Epoch: 426
+Sum of square errors: 45.028677143383945
+Epoch: 427
+Sum of square errors: 45.02867714338368
+Epoch: 428
+Sum of square errors: 45.02867714338342
+Epoch: 429
+Sum of square errors: 45.028677143383156
+Epoch: 430
+Sum of square errors: 45.02867714338289
+Epoch: 431
+Sum of square errors: 45.02867714338262
+Epoch: 432
+Sum of square errors: 45.02867714338236
+Epoch: 433
+Sum of square errors: 45.02867714338209
+Epoch: 434
+Sum of square errors: 45.028677143381834
+Epoch: 435
+Sum of square errors: 45.028677143381586
+Epoch: 436
+Sum of square errors: 45.02867714338131
+Epoch: 437
+Sum of square errors: 45.02867714338106
+Epoch: 438
+Sum of square errors: 45.02867714338079
+Epoch: 439
+Sum of square errors: 45.02867714338052
+Epoch: 440
+Sum of square errors: 45.02867714338025
+Epoch: 441
+Sum of square errors: 45.028677143379994
+Epoch: 442
+Sum of square errors: 45.028677143379724
+Epoch: 443
+Sum of square errors: 45.028677143379475
+Epoch: 444
+Sum of square errors: 45.02867714337922
+Epoch: 445
+Sum of square errors: 45.02867714337896
+Epoch: 446
+Sum of square errors: 45.028677143378694
+Epoch: 447
+Sum of square errors: 45.02867714337842
+Epoch: 448
+Sum of square errors: 45.028677143378154
+Epoch: 449
+Sum of square errors: 45.028677143377905
+Epoch: 450
+Sum of square errors: 45.02867714337764
+Epoch: 451
+Sum of square errors: 45.02867714337737
+Epoch: 452
+Sum of square errors: 45.02867714337711
+Epoch: 453
+Sum of square errors: 45.02867714337684
+Epoch: 454
+Sum of square errors: 45.02867714337656
+Epoch: 455
+Sum of square errors: 45.02867714337629
+Epoch: 456
+Sum of square errors: 45.02867714337603
+Epoch: 457
+Sum of square errors: 45.02867714337577
+Epoch: 458
+Sum of square errors: 45.02867714337552
+Epoch: 459
+Sum of square errors: 45.02867714337526
+Epoch: 460
+Sum of square errors: 45.02867714337499
+Epoch: 461
+Sum of square errors: 45.02867714337473
+Epoch: 462
+Sum of square errors: 45.028677143374466
+Epoch: 463
+Sum of square errors: 45.0286771433742
+Epoch: 464
+Sum of square errors: 45.02867714337395
+Epoch: 465
+Sum of square errors: 45.02867714337368
+Epoch: 466
+Sum of square errors: 45.02867714337341
+Epoch: 467
+Sum of square errors: 45.02867714337315
+Epoch: 468
+Sum of square errors: 45.02867714337287
+Epoch: 469
+Sum of square errors: 45.02867714337262
+Epoch: 470
+Sum of square errors: 45.02867714337235
+Epoch: 471
+Sum of square errors: 45.0286771433721
+Epoch: 472
+Sum of square errors: 45.02867714337184
+Epoch: 473
+Sum of square errors: 45.02867714337157
+Epoch: 474
+Sum of square errors: 45.02867714337131
+Epoch: 475
+Sum of square errors: 45.02867714337104
+Epoch: 476
+Sum of square errors: 45.02867714337078
+Epoch: 477
+Sum of square errors: 45.028677143370516
+Epoch: 478
+Sum of square errors: 45.02867714337025
+Epoch: 479
+Sum of square errors: 45.02867714336997
+Epoch: 480
+Sum of square errors: 45.02867714336971
+Epoch: 481
+Sum of square errors: 45.02867714336946
+Epoch: 482
+Sum of square errors: 45.02867714336919
+Epoch: 483
+Sum of square errors: 45.02867714336893
+Epoch: 484
+Sum of square errors: 45.02867714336866
+Epoch: 485
+Sum of square errors: 45.0286771433684
+Epoch: 486
+Sum of square errors: 45.02867714336812
+Epoch: 487
+Sum of square errors: 45.02867714336787
+Epoch: 488
+Sum of square errors: 45.0286771433676
+Epoch: 489
+Sum of square errors: 45.02867714336735
+Epoch: 490
+Sum of square errors: 45.02867714336709
+Epoch: 491
+Sum of square errors: 45.028677143366814
+Epoch: 492
+Sum of square errors: 45.028677143366544
+Epoch: 493
+Sum of square errors: 45.028677143366274
+Epoch: 494
+Sum of square errors: 45.02867714336602
+Epoch: 495
+Sum of square errors: 45.028677143365755
+Epoch: 496
+Sum of square errors: 45.02867714336549
+Epoch: 497
+Sum of square errors: 45.02867714336523
+Epoch: 498
+Sum of square errors: 45.02867714336497
+Epoch: 499
+Sum of square errors: 45.02867714336471
+Training completed in 2193803 milliseconds
+NeuralNetwork{networkConfig=NeuralNetworkConfig{inputLayerTransformFunction=, inputLayerThreshold=0.1, outputLayerTransformFunction=s, outputLayerThreshold=0.1, learningRate=0.4, numberOfEpochs=500}}
+Loading testing data...
+Testing data prepared in 394 milliseconds
+Expected class: 0.0
+Predicting...
+Predicted class: 0.0
+Disconnected from the target VM, address: '127.0.0.1:52962', transport: 'socket'
+
+Process finished with exit code 0
+
