@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 public class NeuralNode {
-    private static Long count = 0l;
+    private static Long count = 0L;
     private Long id;
     private NeuralLayer layer;
 
     private ArrayList<NeuralConnection> incomingConnections;
     private ArrayList<NeuralConnection> outgoingConnections;
 
-    private double activatedValue = 0D;
-    private double thresholdValue = 0D;
-    private double outputValue = 0D;
+    private double activatedValue = 0d;
+    private double thresholdValue = 0d;
+    private double outputValue = 0d;
     private double targetValue;
 
-    private double errorValue = 0D;
+    private double errorValue = 0d;
 
     private char transformFunction;
 
@@ -59,12 +59,13 @@ public class NeuralNode {
         if (null == this.incomingConnections) {
             return;
         }
-        this.activatedValue = 0D;
+        this.activatedValue = 0d;
         // for an incoming connection, this node is nodeB
         for (NeuralConnection connection : this.incomingConnections) {
             this.activatedValue += connection.getWeight() * connection.getNodeA().getOutputValue();
         }
-        this.activatedValue -= this.thresholdValue;
+//        this.activatedValue -= this.thresholdValue;
+        this.activatedValue = (this.activatedValue/this.incomingConnections.size()) - this.thresholdValue;
     }
 
     public void transformNeuron() {
@@ -73,7 +74,7 @@ public class NeuralNode {
         }
         switch (this.transformFunction) {
             case 's':
-                this.outputValue = this.transformSigmoid();
+                this.outputValue = this.transformSigmoid(this.activatedValue);
                 break;
             default:
                 this.outputValue = this.activatedValue;
@@ -86,7 +87,7 @@ public class NeuralNode {
                 this.errorValue = this.getErrorValue(this.getDerivativeForSigmoid(this.outputValue));
                 break;
             default:
-                this.errorValue = this.getErrorValue(1D);
+                this.errorValue = this.getErrorValue(1d);
         }
     }
 
@@ -163,8 +164,8 @@ public class NeuralNode {
     }
 
     private double getErrorValue(double delta) {
-        double currentErrorValue = 0D;
-        if (0D != this.targetValue) {
+        double currentErrorValue = 0d;
+        if (this.outgoingConnections.isEmpty()) {
             //  output node
             currentErrorValue = (this.targetValue - this.outputValue) * delta;
         } else {
@@ -177,12 +178,12 @@ public class NeuralNode {
         return currentErrorValue;
     }
 
-    private double transformSigmoid() {
+    private double transformSigmoid(double value) {
 
-        return 1 / (1 + (Math.exp(-1*this.activatedValue)));
+        return 1 / (1 + (Math.exp(-1*value)));
     }
 
     private double getDerivativeForSigmoid(double value) {
-        return value * (1D - value);
+        return value * (1d - value);
     }
 }

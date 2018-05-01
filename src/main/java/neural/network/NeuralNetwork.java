@@ -6,8 +6,8 @@ import neural.node.NeuralNode;
 import weka.core.Instance;
 import weka.core.Instances;
 
-import javax.swing.event.DocumentEvent;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 public class NeuralNetwork {
 
@@ -15,11 +15,14 @@ public class NeuralNetwork {
     private NeuralLayer inputLayer;
     private ArrayList<NeuralLayer> hiddenLayers;
     private NeuralLayer outputLayer;
-    private Instances instances;
+    private Instances trainingInstances;
+    private Instances testingInstances;
+    private long countOfCorrectPredictions = 0;
 
-    public NeuralNetwork(NeuralNetworkConfig networkConfig, Instances instances) {
+    public NeuralNetwork(NeuralNetworkConfig networkConfig, Instances trainingInstances, Instances testingInstances) {
         this.networkConfig = networkConfig;
-        this.instances = instances;
+        this.trainingInstances = trainingInstances;
+        this.testingInstances = testingInstances;
         this.initializeNeuralLayers();
         this.initializeNeuralConnections();
     }
@@ -27,38 +30,93 @@ public class NeuralNetwork {
     public void train() {
         System.out.println(this.toString());
         System.out.println("Starting training");
+
+        double earlierMisClassifications = Double.POSITIVE_INFINITY;
+        double currentMisClassifications = Double.POSITIVE_INFINITY;
+
+        long startTime = System.nanoTime();
         for (int i = 0; i < this.networkConfig.getNumberOfEpochs(); i++) {
             System.out.println("Epoch: " + i);
-            for (Instance instance : this.instances) {
+            for (Instance instance : this.trainingInstances) {
                 this.updateInputLayer(instance);
+                this.updateTargetValueInOutputLayer(instance);
                 this.forwardPropogate();
                 this.backwardPropagate();
-                this.updateWeights();
+                this.updateWeights(i);
             }
-            System.out.println("Sum of square errors: " + this.getSumSquaredErrorFromOutputLayer());
+            currentMisClassifications = this.getNumberOfMisClassifications();
+            System.out.println("MisClassifications: " + currentMisClassifications);
+            if (currentMisClassifications <= earlierMisClassifications) {
+                earlierMisClassifications = currentMisClassifications;
+            } else {
+                System.out.println("MisClassifications started increasing from " + earlierMisClassifications + " to " + currentMisClassifications);
+                this.revertWeights();
+                break;
+            }
         }
-        System.out.println("Training completed!");
+        long endTime = System.nanoTime();
+        System.out.println("Training completed in " + (endTime - startTime) / 1000000 + " milliseconds");
     }
 
     public void predictClass(Instance instance) {
-        System.out.println("Expected class: " + instance.value(instance.numAttributes() - 1));
-        System.out.println("Predicting...");
         this.updateInputLayer(instance);
-        System.out.println("Predicted class: " + this.getMaxOutputFromOutputLayer());
+        this.forwardPropogate();
+        double expectedClass = instance.value(instance.numAttributes() - 1);
+        double predictedClass = this.getMaxOutputFromOutputLayer();
+        if (expectedClass == predictedClass) {
+            this.countOfCorrectPredictions++;
+        }
+        System.out.println("Expected class: " + expectedClass + " Predicted class: " + predictedClass);
+    }
+
+    public long getCountOfCorrectPredictions() {
+        return countOfCorrectPredictions;
+    }
+
+    public void setCountOfCorrectPredictions(long countOfCorrectPredictions) {
+        this.countOfCorrectPredictions = countOfCorrectPredictions;
+    }
+
+    private long getNumberOfMisClassifications() {
+        long misClassifications = 0l;
+        for (Instance instance : this.testingInstances) {
+            this.updateInputLayer(instance);
+            this.forwardPropogate();
+            double expectedClass = instance.value(instance.numAttributes() - 1);
+            double predictedClass = this.getMaxOutputFromOutputLayer();
+            if (expectedClass != predictedClass) {
+                misClassifications++;
+            }
+        }
+        return misClassifications;
+    }
+
+    private void updateTargetValueInOutputLayer(Instance instance) {
+//        double targetValue = Double.parseDouble(instance.classValue().toString());
+        for (int i = 0; i < this.outputLayer.getNumberOfNodes(); i++) {
+            NeuralNode outputNode = this.outputLayer.getNeuralNodes().get(i);
+            if (instance.classValue() == i) {
+                outputNode.setTargetValue(1d);
+            } else {
+                outputNode.setTargetValue(0d);
+            }
+        }
     }
 
     private double getMaxOutputFromOutputLayer() {
         double max = Double.NEGATIVE_INFINITY;
-        for (NeuralNode outputNode : this.outputLayer.getNeuralNodes()) {
-            if (outputNode.getOutputValue() > max) {
-                max = outputNode.getOutputValue();
+        int outputClass = 0;
+        for (int i = 0; i < this.outputLayer.getNumberOfNodes(); i++) {
+            if (this.outputLayer.getNeuralNodes().get(i).getOutputValue() > max) {
+                max = this.outputLayer.getNeuralNodes().get(i).getOutputValue();
+                outputClass = i;
             }
         }
-        return max;
+        return outputClass;
     }
 
     private double getSumSquaredErrorFromOutputLayer() {
-        double sumOfErrors = 0D;
+        double sumOfErrors = 0d;
         for (NeuralNode outputNode : this.outputLayer.getNeuralNodes()) {
             sumOfErrors += Math.pow((outputNode.getTargetValue() - outputNode.getOutputValue()), 2);
         }
@@ -75,28 +133,47 @@ public class NeuralNetwork {
         this.backPropagateHiddenLayers();
     }
 
-    private void updateWeights() {
-        this.updateWeightsForLayer(this.inputLayer);
-        this.updateWeightsHiddenLayers();
+    private void revertWeights() {
+        this.revertWeightsForLayer(this.inputLayer);
+        this.revertWeightsHiddenLayers();
     }
 
-    private void updateWeightsHiddenLayers() {
+    private void updateWeights(int epochNo) {
+        this.updateWeightsForLayer(this.inputLayer, epochNo);
+        this.updateWeightsHiddenLayers(epochNo);
+    }
+
+    private void updateWeightsHiddenLayers(int epochNo) {
         for (NeuralLayer hiddenLayer : this.hiddenLayers) {
-            this.updateWeightsForLayer(hiddenLayer);
+            this.updateWeightsForLayer(hiddenLayer, epochNo);
         }
     }
 
-    private void updateWeightsForLayer(NeuralLayer layer) {
+    private void revertWeightsHiddenLayers() {
+        for (NeuralLayer hiddenLayer : this.hiddenLayers) {
+            this.revertWeightsForLayer(hiddenLayer);
+        }
+    }
+
+    private void updateWeightsForLayer(NeuralLayer layer, int epochNo) {
         for (NeuralNode node : layer.getNeuralNodes()) {
             for (NeuralConnection connection : node.getOutgoingConnections()) {
-                connection.updateWeight();
+                connection.updateWeight(epochNo);
+            }
+        }
+    }
+
+    private void revertWeightsForLayer(NeuralLayer layer) {
+        for (NeuralNode node : layer.getNeuralNodes()) {
+            for (NeuralConnection connection : node.getOutgoingConnections()) {
+                connection.revertWeight();
             }
         }
     }
 
     private void backPropagateHiddenLayers() {
-        for (NeuralLayer hiddenLayer : this.hiddenLayers) {
-            this.backPropagateFromNeuralLayer(hiddenLayer);
+        for (int i = this.hiddenLayers.size() - 1; i >= 0; i--) {
+            this.backPropagateFromNeuralLayer(this.hiddenLayers.get(i));
         }
     }
 
@@ -131,7 +208,7 @@ public class NeuralNetwork {
             return;
         }
         this.initializeConnections(this.inputLayer, this.hiddenLayers.get(0));
-        for (int i = 1; i < this.hiddenLayers.size() - 1; i++) {
+        for (int i = 0; i < this.hiddenLayers.size() - 1; i++) {
             this.initializeConnections(this.hiddenLayers.get(i), this.hiddenLayers.get(i + 1));
         }
         this.initializeConnections(this.hiddenLayers.get(this.hiddenLayers.size() - 1), this.outputLayer);
@@ -139,7 +216,7 @@ public class NeuralNetwork {
 
 
     private void initializeInputLayer() {
-        this.inputLayer = new NeuralLayer(this.instances.numAttributes() - 1,
+        this.inputLayer = new NeuralLayer(this.trainingInstances.numAttributes() - 1,
                 this.networkConfig.getInputLayerTransformFunction(),
                 this.networkConfig.getInputLayerThreshold(), this.networkConfig.getLearningRate());
 
@@ -148,9 +225,6 @@ public class NeuralNetwork {
     private void updateInputLayer(Instance instance) {
         ArrayList<NeuralNode> inputNodes = this.inputLayer.getNeuralNodes();
         for (int i = 0; i < inputNodes.size(); i++) {
-            if (instance.value(i) > 1) {
-                int a = 3;
-            }
             inputNodes.get(i).setOutputValue(instance.value(i));
         }
     }
@@ -167,21 +241,40 @@ public class NeuralNetwork {
     }
 
     private void initializeOutputLayer() {
-        this.outputLayer = new NeuralLayer(this.instances.numClasses(),
+        this.outputLayer = new NeuralLayer(this.trainingInstances.numClasses(),
                 this.networkConfig.getOutputLayerTransformFunction(),
                 this.networkConfig.getOutputLayerThreshold(),
                 this.networkConfig.getLearningRate());
+//        this.setNormalizedTargetValuesForOutputLayer();
 
-        for (int i = 0; i < this.instances.numClasses(); i++) {
-            double transformedTargetValue = this.transformSigmoid(Double.valueOf(i));
-            this.outputLayer.getNeuralNodes().get(i).setTargetValue(transformedTargetValue);
-        }
+//        for (int i = 0; i < this.trainingInstances.numClasses(); i++) {
+//            double transformedTargetValue = this.transformSigmoid(Double.valueOf(i));
+//            this.outputLayer.getNeuralNodes().get(i).setTargetValue(Double.valueOf(i));
+//        }
 //        this.outputLayer = new NeuralLayer(2,
 //                this.networkConfig.getOutputLayerTransformFunction(),
 //                this.networkConfig.getOutputLayerThreshold(), this.networkConfig.getLearningRate());
 //        for (int i = 0; i < 2; i++) {
 //            this.outputLayer.getNeuralNodes().get(i).setTargetValue(Double.valueOf(i));
 //        }
+    }
+
+    private void setNormalizedTargetValuesForOutputLayer() {
+        double[] targetValues = new double[this.trainingInstances.numClasses()];
+        double sum = 0d;
+
+        Enumeration<Object> classes = this.trainingInstances.classAttribute().enumerateValues();
+        for (int i = 0; classes.hasMoreElements(); i++) {
+            targetValues[i] = Double.parseDouble(classes.nextElement().toString());
+            sum += targetValues[i];
+        }
+
+        for (int i = 0; i < this.trainingInstances.numClasses(); i++) {
+//            double normalizedTargetValue = (targetValues[i] / sum);
+            double normalizedTargetValue = (targetValues[i] / this.trainingInstances.numClasses());
+            this.outputLayer.getNeuralNodes().get(i).setTargetValue(normalizedTargetValue);
+        }
+
     }
 
     private double transformSigmoid(double value) {

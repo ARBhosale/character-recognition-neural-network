@@ -10,13 +10,15 @@ public class NeuralConnection {
     private Long id;
     private NeuralNode nodeA;
     private NeuralNode nodeB;
+    private double oldWeight = 0d;
     private double weight = Math.random();
-    private double learningRate = 0.3D;
+    private double learningRate = 0.3d;
 
     public NeuralConnection(NeuralNode nodeA, NeuralNode nodeB) {
         this.nodeA = nodeA;
         this.nodeB = nodeB;
         this.id = ++NeuralConnection.count;
+        this.oldWeight = this.weight;
     }
 
     public double getLearningRate() {
@@ -59,7 +61,13 @@ public class NeuralConnection {
         this.weight = weight;
     }
 
-    public void updateWeight() {
+    public void updateWeight(int epochNo) {
+        this.oldWeight = this.weight;
         this.weight += this.learningRate * this.nodeB.getErrorValue() * this.nodeA.getOutputValue();
+//        this.weight = this.weight/(epochNo+1);
+    }
+
+    public void revertWeight() {
+        this.weight = this.oldWeight;
     }
 }

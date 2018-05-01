@@ -78,6 +78,15 @@ public class NeuralNetworkConfig {
         this.hiddenLayerConfigs = hiddenLayerConfigs;
     }
 
+    private String getHiddenLayersString() {
+        int layerNumber = 0;
+        String result = "";
+        for (HiddenLayerConfig config : this.hiddenLayerConfigs) {
+            result += "Hidden layer " + (++layerNumber) + "\n" + config.toString() + "\n";
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         return "NeuralNetworkConfig{" +
@@ -87,6 +96,7 @@ public class NeuralNetworkConfig {
                 ", outputLayerThreshold=" + outputLayerThreshold +
                 ", learningRate=" + learningRate +
                 ", numberOfEpochs=" + numberOfEpochs +
+                "Hidden layers \n" + this.getHiddenLayersString() +
                 '}';
     }
 }
