@@ -112,3 +112,6 @@ buildNumber.properties
 
 .idea/
 *.iml
+
+datasets/emnist-balanced-train3.arff
+datasets/emnist-balanced-test3.arff
