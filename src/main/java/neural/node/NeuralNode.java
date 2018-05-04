@@ -4,7 +4,6 @@ import neural.connection.NeuralConnection;
 import neural.layer.NeuralLayer;
 
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 public class NeuralNode {
     private static Long count = 0L;
@@ -60,12 +59,17 @@ public class NeuralNode {
             return;
         }
         this.activatedValue = 0d;
+        long normalizer = 0l;
         // for an incoming connection, this node is nodeB
         for (NeuralConnection connection : this.incomingConnections) {
+            if (connection.getNodeA().getOutputValue() > 0) {
+                normalizer++;
+            }
             this.activatedValue += connection.getWeight() * connection.getNodeA().getOutputValue();
         }
+        this.activatedValue = (this.activatedValue / normalizer) - this.thresholdValue;
 //        this.activatedValue -= this.thresholdValue;
-        this.activatedValue = (this.activatedValue/this.incomingConnections.size()) - this.thresholdValue;
+//        this.activatedValue = (this.activatedValue / this.incomingConnections.size()) - this.thresholdValue;
     }
 
     public void transformNeuron() {
@@ -76,6 +80,9 @@ public class NeuralNode {
             case 's':
                 this.outputValue = this.transformSigmoid(this.activatedValue);
                 break;
+            case 'x':
+                this.outputValue = this.transformSoftmax(this.activatedValue);
+                break;
             default:
                 this.outputValue = this.activatedValue;
         }
@@ -85,6 +92,9 @@ public class NeuralNode {
         switch (this.transformFunction) {
             case 's':
                 this.errorValue = this.getErrorValue(this.getDerivativeForSigmoid(this.outputValue));
+                break;
+            case 'x':
+                this.errorValue = this.getErrorValue(this.getDerivativeForSoftmax(this.outputValue));
                 break;
             default:
                 this.errorValue = this.getErrorValue(1d);
@@ -178,9 +188,24 @@ public class NeuralNode {
         return currentErrorValue;
     }
 
+    private double transformSoftmax(double value) {
+        double totalLayerInput = 0d;
+
+        for (NeuralNode node : this.layer.getNeuralNodes()) {
+            totalLayerInput += Math.exp(node.getActivatedValue());
+        }
+
+        double output = Math.exp(value) / totalLayerInput;
+        return output;
+    }
+
+    private double getDerivativeForSoftmax(double value) {
+        return value * (1d - value);
+    }
+
     private double transformSigmoid(double value) {
 
-        return 1 / (1 + (Math.exp(-1*value)));
+        return 1 / (1 + (Math.exp(-1 * value)));
     }
 
     private double getDerivativeForSigmoid(double value) {

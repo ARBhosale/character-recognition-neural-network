@@ -34,6 +34,8 @@ public class NeuralNetwork {
         double earlierMisClassifications = Double.POSITIVE_INFINITY;
         double currentMisClassifications = Double.POSITIVE_INFINITY;
 
+        double minSumOfSquaresError = Double.POSITIVE_INFINITY;
+
         long startTime = System.nanoTime();
         for (int i = 0; i < this.networkConfig.getNumberOfEpochs(); i++) {
             System.out.println("Epoch: " + i);
@@ -43,6 +45,11 @@ public class NeuralNetwork {
                 this.forwardPropogate();
                 this.backwardPropagate();
                 this.updateWeights(i);
+//                double sumOfSquaresError = this.getSumOfSquaresError();
+//                if (sumOfSquaresError <= minSumOfSquaresError) {
+//                    minSumOfSquaresError = sumOfSquaresError;
+//                    this.updateWeights(i);
+//                }
             }
             currentMisClassifications = this.getNumberOfMisClassifications();
             System.out.println("MisClassifications: " + currentMisClassifications);
@@ -50,8 +57,8 @@ public class NeuralNetwork {
                 earlierMisClassifications = currentMisClassifications;
             } else {
                 System.out.println("MisClassifications started increasing from " + earlierMisClassifications + " to " + currentMisClassifications);
-                this.revertWeights();
-                break;
+//                this.revertWeights();
+//                break;
             }
         }
         long endTime = System.nanoTime();
@@ -66,7 +73,7 @@ public class NeuralNetwork {
         if (expectedClass == predictedClass) {
             this.countOfCorrectPredictions++;
         }
-        System.out.println("Expected class: " + expectedClass + " Predicted class: " + predictedClass);
+//        System.out.println("Expected class: " + expectedClass + " Predicted class: " + predictedClass);
     }
 
     public long getCountOfCorrectPredictions() {
@@ -113,6 +120,14 @@ public class NeuralNetwork {
             }
         }
         return outputClass;
+    }
+
+    private double getSumOfSquaresError() {
+        double sumOfErrors = 0d;
+        for (NeuralNode outputNode : this.outputLayer.getNeuralNodes()) {
+            sumOfErrors += Math.pow(outputNode.getErrorValue(), 2);
+        }
+        return sumOfErrors;
     }
 
     private double getSumSquaredErrorFromOutputLayer() {
@@ -296,8 +311,6 @@ public class NeuralNetwork {
 
     @Override
     public String toString() {
-        return "NeuralNetwork{" +
-                "networkConfig=" + networkConfig.toString() +
-                '}';
+        return networkConfig.toString();
     }
 }

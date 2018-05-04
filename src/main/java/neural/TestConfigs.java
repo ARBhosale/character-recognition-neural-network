@@ -30,10 +30,10 @@ public class TestConfigs {
     private void initializeTestConfig1() {
 
         HiddenLayerConfig hConfig1 = new HiddenLayerConfig(150, 's');
-        hConfig1.setThreshold(0.2d);
+        hConfig1.setThreshold(0.6d);
 
         HiddenLayerConfig hConfig2 = new HiddenLayerConfig(100, 's');
-        hConfig2.setThreshold(0.3d);
+        hConfig2.setThreshold(0.6d);
 
         ArrayList<HiddenLayerConfig> hConfigs = new ArrayList<HiddenLayerConfig>();
 
@@ -41,11 +41,11 @@ public class TestConfigs {
 //        hConfigs.add(hConfig2);
 
         NeuralNetworkConfig config1 = new NeuralNetworkConfig(hConfigs);
-        config1.setInputLayerThreshold(0.2d);
-        config1.setOutputLayerThreshold(0.2d);
-        config1.setOutputLayerTransformFunction('s');
-        config1.setLearningRate(0.3);
-        config1.setNumberOfEpochs(500);
+        config1.setInputLayerThreshold(0.6d);
+        config1.setOutputLayerThreshold(0.6d);
+        config1.setOutputLayerTransformFunction('x');
+        config1.setLearningRate(0.5);
+        config1.setNumberOfEpochs(100);
         this.networkConfigs.add(config1);
     }
 }

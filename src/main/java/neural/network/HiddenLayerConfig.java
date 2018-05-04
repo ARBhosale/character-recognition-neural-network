@@ -36,10 +36,8 @@ public class HiddenLayerConfig {
 
     @Override
     public String toString() {
-        return "HiddenLayerConfig{" +
-                "numberOfHiddenUnits=" + numberOfHiddenUnits +
-                ", transformFunction=" + transformFunction +
-                ", threshold=" + threshold +
-                '}';
+        return "NumberOfHiddenUnits=" + numberOfHiddenUnits +
+                "\nTransformFunction=" + transformFunction +
+                "\nThreshold=" + threshold;
     }
 }

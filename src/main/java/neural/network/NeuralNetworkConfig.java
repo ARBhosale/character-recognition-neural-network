@@ -89,14 +89,13 @@ public class NeuralNetworkConfig {
 
     @Override
     public String toString() {
-        return "NeuralNetworkConfig{" +
-                "inputLayerTransformFunction=" + inputLayerTransformFunction +
-                ", inputLayerThreshold=" + inputLayerThreshold +
-                ", outputLayerTransformFunction=" + outputLayerTransformFunction +
-                ", outputLayerThreshold=" + outputLayerThreshold +
-                ", learningRate=" + learningRate +
-                ", numberOfEpochs=" + numberOfEpochs +
-                "Hidden layers \n" + this.getHiddenLayersString() +
+        return  "InputLayerTransformFunction=" + inputLayerTransformFunction +
+                "\nInputLayerThreshold=" + inputLayerThreshold +
+                "\nOutputLayerTransformFunction=" + outputLayerTransformFunction +
+                "\nOutputLayerThreshold=" + outputLayerThreshold +
+                "\nLearningRate=" + learningRate +
+                "\nIterations=" + numberOfEpochs +
+                "\nHidden layers config:\n" + this.getHiddenLayersString() +
                 '}';
     }
 }
